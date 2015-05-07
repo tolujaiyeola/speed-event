@@ -4,12 +4,13 @@
   <title>SpeedEvent</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Caudex:400,700' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
   <!-- Static navbar -->
+        <!-- <nav class="navbar navbar-inverse navbar-fixed-top"> -->
         <nav class="navbar navbar-inverse">
           <div class="container-fluid">
             <div class="navbar-header">
@@ -26,6 +27,11 @@
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
+                <% if user_signed_in?%>
+                  <li><%= link_to "Sign-Out",destroy_user_session_path,:method => :delete %></li>
+                <% else %>
+                  <li><%= link_to "Sign-In", user_session_path %></li>
+                <% end %>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
@@ -47,6 +53,8 @@
             </div><!--/.nav-collapse -->
           </div><!--/.container-fluid -->
         </nav>
+        <br>
+        <br>
 <%= yield %>
 
 </body>

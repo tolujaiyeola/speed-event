@@ -2,4 +2,4 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 PrivatePub.subscribe "/messages/new", (data, channel) ->
-  alert data.message.content
+  alert data.message.text
